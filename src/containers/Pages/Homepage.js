@@ -12,6 +12,7 @@ const HomePage = () => {
   const loading = useSelector((state) => state.product.loading);
   const products = useSelector((state) => state.product.products);
   const totalPageNum = useSelector((state) => state.product.totalPageNum);
+ 
   const dispatch = useDispatch();
   const history = useHistory();
 

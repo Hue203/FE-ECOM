@@ -3,6 +3,7 @@ const initialState = {
   user: {},
   accessToken: localStorage.getItem("accessToken"),
   loading: false,
+  isAuthenticated: false,
 };
 
 const authReducer = (state = initialState, action) => {

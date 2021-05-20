@@ -18,6 +18,7 @@ const loginRequest = (email, password) => async (dispatch) => {
   try {
     const res = await api.post("/auth/login", { email, password });
     const name = res.data.data.user.name;
+    localStorage.setItem("accessToken", res.data.data.accessToken);
     dispatch({ type: types.LOGIN_SUCCESS, payload: res.data.data });
     toast.success(`Welcome ${name}`);
     api.defaults.headers.common["authorization"] =

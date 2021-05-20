@@ -22,9 +22,7 @@ const PublicLayout = () => {
           <Route exact path="/" component={HomePage} />
           <Route exact path="/register" component={RegisterPage} />
           <Route exact path="/login" component={LoginPage} />
-
           <Route exact path="/product/:id" component={DetailPage} />
-
           <ProtectedRoute exact path="/user/me" component={DashboardPage} />
 
           <Route component={NotFoundPage} />

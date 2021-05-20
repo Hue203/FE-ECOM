@@ -22,6 +22,7 @@ const productsRequest =
       const res = await api.get(
         `/product?page=${pageNum}&limit=${limit}${queryString}${sortByString}`
       );
+      console.log("res", res);
       dispatch({ type: types.GET_PRODUCTS_SUCCESS, payload: res.data.data });
     } catch (error) {
       console.log(error);
@@ -45,29 +46,35 @@ const getSingleProduct = (productId) => async (dispatch) => {
   }
 };
 
-const createNewProduct = (name, discription, price) => async (dispatch) => {
-  dispatch({ type: types.CREATE_PRODUCT_REQUEST, payload: null });
-  try {
-    const res = await api.post("/product/add", { name, discription, price });
+const createNewProduct =
+  (name, description, price, images) => async (dispatch) => {
+    dispatch({ type: types.CREATE_PRODUCT_REQUEST, payload: null });
+    try {
+      const res = await api.post("/product/add", {
+        name,
+        description,
+        price,
+        images,
+      });
 
-    dispatch({
-      type: types.CREATE_PRODUCT_SUCCESS,
-      payload: res.data.data,
-    });
-    dispatch(routeActions.redirect("__GO_BACK__"));
-    toast.success("New product has been created!");
-  } catch (error) {
-    dispatch({ type: types.CREATE_PRODUCT_FAILURE, payload: error });
-  }
-};
+      dispatch({
+        type: types.CREATE_PRODUCT_SUCCESS,
+        payload: res.data.data,
+      });
+      dispatch(routeActions.redirect("__GO_BACK__"));
+      toast.success("New product has been created!");
+    } catch (error) {
+      dispatch({ type: types.CREATE_PRODUCT_FAILURE, payload: error });
+    }
+  };
 
 const updateProduct =
-  (productId, name, discription, price) => async (dispatch) => {
+  (productId, name, description, price) => async (dispatch) => {
     try {
       dispatch({ type: types.UPDATE_PRODUCT_REQUEST, payload: null });
       const res = await api.put(`/product/${productId}/update`, {
         name,
-        discription,
+        description,
         price,
       });
       dispatch({
@@ -82,21 +89,17 @@ const updateProduct =
   };
 
 const deleteProduct =
-  (productId, name, discription, price) => async (dispatch) => {
+  (productId, redirectTo = "_GO_BACK_") =>
+  async (dispatch) => {
     try {
       dispatch({ type: types.DELETE_PRODUCT_REQUEST, payload: null });
-      const res = await api.delete(`/product/${productId}/delete`, {
-        productId,
-        name,
-        discription,
-        price,
-      });
+      const res = await api.delete(`/product/${productId}/delete`);
       dispatch({
         type: types.DELETE_PRODUCT_SUCCESS,
         payload: res.data.data,
       });
-      dispatch(routeActions.redirect("__GO_BACK__"));
-      toast.success("The product has been updated!");
+      dispatch(routeActions.redirect(redirectTo));
+      toast.success("The product has been Deleted");
     } catch (error) {
       dispatch({ type: types.DELETE_PRODUCT_FAILURE, payload: error });
     }
