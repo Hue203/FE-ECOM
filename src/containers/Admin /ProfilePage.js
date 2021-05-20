@@ -3,7 +3,7 @@ import React from "react";
 const ProfilePage = () => {
   return (
     <div>
-      <h1>ProfilePage</h1>
+      <h1>ProfilePage // infor of admin</h1>
     </div>
   );
 };

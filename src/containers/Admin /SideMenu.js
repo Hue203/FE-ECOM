@@ -19,7 +19,7 @@ const SideMenu = () => {
         <Nav.Item>
           <Nav.Link
             as={NavLink}
-            to="/admin/product"
+            to="/admin/order"
             activeClassName="active"
             strict={true}
           >
@@ -34,6 +34,16 @@ const SideMenu = () => {
             strict={true}
           >
             Payments
+          </Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link
+            as={NavLink}
+            to="/admin/product"
+            activeClassName="active"
+            strict={true}
+          >
+            Product
           </Nav.Link>
         </Nav.Item>
         <Nav.Item>

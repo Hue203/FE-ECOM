@@ -75,12 +75,14 @@ const DetailPage = () => {
                       <div>
                         <ul>
                           {<p>{`Price: $ ${singleProduct.product.price}`}</p>}
+                          <p>Quantity: 10</p>
                           <Button variant="warning"> Add to Card </Button>
                         </ul>
                       </div>
 
                       <div>
                         <ul>
+                          <ul>Detail's product information</ul>
                           <h1>Review</h1>
                         </ul>
                       </div>

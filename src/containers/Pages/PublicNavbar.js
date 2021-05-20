@@ -20,6 +20,9 @@ const PublicNavbar = () => {
       <Nav.Link as={Link} to="/user/me">
         <FontAwesomeIcon icon="chart-line" size="sm" /> Account
       </Nav.Link>
+      <Nav.Link as={Link} to="/admin/profile">
+        <FontAwesomeIcon icon="chart-line" size="sm" /> Admin
+      </Nav.Link>
       <Nav.Link onClick={handleLogout}>
         <FontAwesomeIcon icon="sign-out-alt" size="sm" /> Logout
       </Nav.Link>
